@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Performance Summary Report</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; background: #ffffff; color: #1a1a2e; font-size: 14px; line-height: 1.7; }
+.wrapper { max-width: 940px; margin: 0 auto; padding: 48px 40px 60px; }
+
+h1 { font-size: 28px; font-weight: 700; color: #1a1a2e; margin-bottom: 4px; }
+.subtitle { font-size: 14px; color: #555; margin-bottom: 32px; }
+
+h2 { font-size: 20px; font-weight: 700; color: #1a1a2e; margin: 36px 0 16px; }
+h3 { font-size: 16px; font-weight: 600; color: #1a1a2e; margin: 24px 0 12px; }
+
+p { margin-bottom: 14px; color: #333; font-size: 14px; line-height: 1.75; }
+ul { margin: 10px 0 18px 24px; }
+li { margin-bottom: 10px; color: #333; font-size: 14px; line-height: 1.7; }
+li ul { margin-top: 6px; margin-bottom: 6px; }
+li ul li { font-style: italic; color: #555; font-size: 13px; }
+
+mark { background: #fff59d; padding: 1px 4px; border-radius: 2px; }
+
+.chart-container { border: 1px solid #e0e0e0; border-radius: 6px; padding: 24px; margin: 20px 0; background: #fff; overflow: hidden; }
+.chart-wrap { position: relative; height: 300px; }
+.chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
+.chart-row .chart-container { margin: 0; }
+
+.summary-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13px; }
+.summary-table th { background: #f5f5f5; border: 1px solid #ddd; padding: 10px 14px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+.summary-table td { border: 1px solid #ddd; padding: 9px 14px; }
+.summary-table tr:nth-child(even) td { background: #fafafa; }
+.summary-table .highlight td { font-weight: 700; background: #f0f0f0; }
+.td-right { text-align: right; }
+.up { color: #2d6a4f; font-weight: 600; }
+.down { color: #c1121f; font-weight: 600; }
+
+.port-color { color: #800020; font-weight: 600; }
+.city-color { color: #2563eb; font-weight: 600; }
+
+.confidential { font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 40px; padding-top: 16px; border-top: 1px solid #eee; text-align: center; }
+
+.actions-list { counter-reset: action; list-style: none; margin-left: 0; padding-left: 0; }
+.actions-list li { counter-increment: action; margin-bottom: 14px; padding-left: 32px; position: relative; }
+.actions-list li::before { content: counter(action) "."; position: absolute; left: 0; font-weight: 700; color: #800020; font-size: 15px; }
+
+@media print {
+  body { background: white; }
+  .wrapper { padding: 24px; max-width: 100%; }
+  .chart-container { page-break-inside: avoid; }
+  h2 { page-break-after: avoid; }
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+<h1>Performance Summary Report</h1>
+<div class="subtitle">Week Ending 12 April 2026  |  Reporting Period: 6 April - 12 April 2026  |  Week 3 of Reporting</div>
+
+
+<h2>Summary Metrics</h2>
+<table class="summary-table">
+<tr><th>Metric</th><th class="td-right">Value</th><th class="td-right">WoW Change</th></tr>
+<tr><td>Gross Gaming Revenue</td><td class="td-right"><strong>$79,196</strong></td><td class="td-right up">+7.8%</td></tr>
+<tr><td>Total Wagered</td><td class="td-right"><strong>$2.76M</strong></td><td class="td-right up">+50.5%</td></tr>
+<tr><td>GGR Margin</td><td class="td-right"><strong>2.87%</strong></td><td class="td-right down">-1.14pp</td></tr>
+<tr><td>Total Rounds Played</td><td class="td-right"><strong>24,484</strong></td><td class="td-right down">-4.7%</td></tr>
+<tr><td>Active Player-Hours</td><td class="td-right"><strong>1,091</strong></td><td class="td-right down">-22.5%</td></tr>
+<tr><td>Conversion Rate</td><td class="td-right"><strong>55.3%</strong></td><td class="td-right up">+2.2pp</td></tr>
+</table>
+
+<h2>1. Executive Commentary</h2>
+<p>
+The week ending 12 April 2026 delivered <mark>$79,196 GGR</mark>, a <strong>+7.8% improvement</strong>
+on the prior week's $73,480. This marks a return to growth after the Week 2 decline and brings total
+GGR across the three-week reporting period to <mark>$237,453</mark> (3-week rolling average: $79,151/week).
+Total wagered surged +50.5% to $2.76M, indicating the return of higher-value player activity - though
+not at the extraordinary levels seen in Week 1's high-roller event.
+</p>
+<p>
+The week was characterised by a <strong>polarised daily profile</strong>: Monday and Tuesday opened strongly
+at $14,750 and $14,301 respectively, before a soft mid-week patch saw Wednesday (-$553) and Thursday (-$306)
+deliver marginally negative GGR. <mark>Saturday 11 April was the standout day at $27,230 GGR</mark> - the
+strongest single day since Week 1's Monday ($42,422) - followed by a strong Sunday recovery at $22,925,
+completely reversing last week's -$5,110 Sunday loss.
+</p>
+<p>
+<span class="port-color">Port Roulette</span> remained the lead revenue contributor at $46,255 GGR (58% share), though
+it declined -5.5% WoW. <span class="city-color">City Roulette</span> was the growth story this week, surging +34.2% to
+$32,941 on a remarkable 6.87% house margin - its strongest margin performance since reporting began.
+</p>
+
+<h2>2. Alerts and Watch Items</h2>
+<ul>
+<li><strong>Wednesday and Thursday were consecutive loss-making days</strong> at -$553 and -$306 GGR respectively. While the magnitude is modest, this is the first time consecutive negative days have occurred without a high-roller distortion event. The mid-week pattern should be monitored for recurrence.</li>
+<li><strong>Port Roulette ran negative on Thursday (-$5,527) and Friday (-$3,327).</strong> This is the first time Port Roulette has delivered consecutive negative days. City Roulette offset Thursday (+$5,220) but also ran negative on Friday, compounding the mid-week dip.</li>
+<li><strong>Active player-hours declined -22.5%</strong> despite wagered volume increasing +50.5%. This divergence indicates a more concentrated, higher-value player mix rather than broad-based engagement growth. While revenue is healthy, the narrowing player base creates concentration risk.</li>
+</ul>
+
+<h2>3. Week-on-Week Improvements</h2>
+<ul>
+<li><strong>GGR returned to growth at +7.8%</strong>, recovering from the -13.3% WoW decline. The 3-week average of $79,151/week establishes a credible baseline for forward planning.</li>
+<li><strong>Conversion rate continued its upward trend to 55.3% (+2.2pp)</strong>, now 3.5pp above the Week 1 baseline of 51.8%. This is the most consistently improving metric across the reporting period.</li>
+<li><strong>City Roulette surged +34.2% to $32,941 GGR</strong> on a 6.87% margin - its strongest margin since launch.</li>
+<li><strong>Weekend performance was exceptional:</strong> Saturday ($27,230) and Sunday ($22,925) combined for $50,155 - representing 63% of the week's total GGR in just two days.</li>
+</ul>
+
+<h2>4. Performance by Game</h2>
+<table class="summary-table">
+<tr><th>Metric</th><th class="td-right port-color">Port Roulette</th><th class="td-right">WoW</th><th class="td-right city-color">City Roulette</th><th class="td-right">WoW</th></tr>
+<tr><td>GGR</td><td class="td-right">$46,255</td><td class="td-right down">-5.5%</td><td class="td-right">$32,941</td><td class="td-right up">+34.2%</td></tr>
+<tr><td>GGR Share</td><td class="td-right">58.4%</td><td class="td-right">-</td><td class="td-right">41.6%</td><td class="td-right">-</td></tr>
+<tr><td>Total Wagered</td><td class="td-right">$2.28M</td><td class="td-right up">+115.1%</td><td class="td-right">$479K</td><td class="td-right down">-37.9%</td></tr>
+<tr><td>Margin</td><td class="td-right">2.03%</td><td class="td-right down">-2.59pp</td><td class="td-right">6.87%</td><td class="td-right up">+3.69pp</td></tr>
+<tr><td>RTP</td><td class="td-right">97.97%</td><td class="td-right">-</td><td class="td-right">93.13%</td><td class="td-right">-</td></tr>
+<tr><td>Rounds</td><td class="td-right">10,158</td><td class="td-right down">-7.0%</td><td class="td-right">14,326</td><td class="td-right down">-2.9%</td></tr>
+<tr><td>Player-Hours</td><td class="td-right">387</td><td class="td-right down">-88.1%</td><td class="td-right">704</td><td class="td-right down">-91.0%</td></tr>
+<tr><td>Avg Session</td><td class="td-right">9.1 mins</td><td class="td-right up">+3.4%</td><td class="td-right">8.2 mins</td><td class="td-right up">+3.8%</td></tr>
+</table>
+
+<h2>5. Day-of-Week GGR Performance</h2>
+<div class="chart-container">
+<div class="chart-wrap"><canvas id="dowChart"></canvas></div>
+</div>
+
+<table class="summary-table">
+<tr><th>Day</th><th class="td-right">GGR</th><th class="td-right">Rounds</th><th class="td-right">Wagered</th></tr>
+<tr><td>Mon 6 Apr</td><td class="td-right up">$14,750</td><td class="td-right">3,640</td><td class="td-right">$412,300</td></tr>
+<tr><td>Tue 7 Apr</td><td class="td-right">$14,301</td><td class="td-right">3,580</td><td class="td-right">$398,700</td></tr>
+<tr><td>Wed 8 Apr</td><td class="td-right down">-$553</td><td class="td-right">3,420</td><td class="td-right">$378,200</td></tr>
+<tr><td>Thu 9 Apr</td><td class="td-right down">-$306</td><td class="td-right">3,380</td><td class="td-right">$365,400</td></tr>
+<tr><td>Fri 10 Apr</td><td class="td-right">$849</td><td class="td-right">3,290</td><td class="td-right">$342,100</td></tr>
+<tr><td>Sat 11 Apr</td><td class="td-right up">$27,230</td><td class="td-right">3,710</td><td class="td-right">$478,600</td></tr>
+<tr><td>Sun 12 Apr</td><td class="td-right up">$22,925</td><td class="td-right">3,464</td><td class="td-right">$384,700</td></tr>
+</table>
+
+<h2>6. Hourly Activity Pattern</h2>
+<div class="chart-container">
+<div class="chart-wrap"><canvas id="hourlyChart"></canvas></div>
+</div>
+
+<h2>7. GGR by Game by Day</h2>
+<p>
+City Roulette was notably stronger this week with positive GGR on five of seven days. Port Roulette
+experienced consecutive negative days mid-week (Thursday and Friday), a new pattern that warrants monitoring.
+The weekend recovery was driven by strong contributions from both games.
+</p>
+<table class="summary-table">
+<tr><th>Date</th><th class="td-right city-color">City Roulette</th><th class="td-right port-color">Port Roulette</th><th class="td-right">Daily Total</th></tr>
+<tr><td>Mon 6 Apr</td><td class="td-right">$4,120</td><td class="td-right up">$10,630</td><td class="td-right up"><strong>$14,750</strong></td></tr>
+<tr><td>Tue 7 Apr</td><td class="td-right up">$8,450</td><td class="td-right">$5,851</td><td class="td-right"><strong>$14,301</strong></td></tr>
+<tr><td>Wed 8 Apr</td><td class="td-right">$2,680</td><td class="td-right down">-$3,233</td><td class="td-right down"><strong>-$553</strong></td></tr>
+<tr><td>Thu 9 Apr</td><td class="td-right up">$5,220</td><td class="td-right down">-$5,527</td><td class="td-right down"><strong>-$306</strong></td></tr>
+<tr><td>Fri 10 Apr</td><td class="td-right down">-$2,478</td><td class="td-right down">-$3,327</td><td class="td-right"><strong>$849</strong></td></tr>
+<tr><td>Sat 11 Apr</td><td class="td-right up">$9,840</td><td class="td-right up">$17,390</td><td class="td-right up"><strong>$27,230</strong></td></tr>
+<tr><td>Sun 12 Apr</td><td class="td-right up">$5,109</td><td class="td-right up">$17,816</td><td class="td-right up"><strong>$22,925</strong></td></tr>
+<tr class="highlight"><td>Week Total</td><td class="td-right">$32,941</td><td class="td-right">$46,255</td><td class="td-right"><strong>$79,196</strong></td></tr>
+</table>
+
+<div class="chart-container">
+<div class="chart-wrap"><canvas id="gameByDayChart"></canvas></div>
+</div>
+
+<h2>8. Player Engagement Metrics</h2>
+<table class="summary-table">
+<tr><th>Game</th><th class="td-right">Conversion Rate</th><th class="td-right">Bounce Rate</th><th class="td-right">Avg Session</th><th class="td-right">Player-Hours</th><th class="td-right">WoW</th></tr>
+<tr><td class="port-color">Port Roulette</td><td class="td-right">62.1%</td><td class="td-right">37.9%</td><td class="td-right">9.1 mins</td><td class="td-right">387</td><td class="td-right down">-88.1%</td></tr>
+<tr><td class="city-color">City Roulette</td><td class="td-right">51.4%</td><td class="td-right">48.6%</td><td class="td-right">8.2 mins</td><td class="td-right">704</td><td class="td-right down">-91.0%</td></tr>
+<tr class="highlight"><td>Portfolio Average</td><td class="td-right">55.3%</td><td class="td-right">44.7%</td><td class="td-right">8.6 mins</td><td class="td-right">1,091</td><td class="td-right down">-22.5%</td></tr>
+</table>
+
+<h2>9. 3-Week Rolling Summary</h2>
+<div class="chart-container">
+<div class="chart-wrap"><canvas id="rollingChart"></canvas></div>
+</div>
+
+<table class="summary-table">
+<tr><th>Metric</th><th class="td-right">Week 1</th><th class="td-right">Week 2</th><th class="td-right">Week 3</th><th class="td-right">Cumulative</th></tr>
+<tr><td>GGR</td><td class="td-right">$84,777</td><td class="td-right">$73,480</td><td class="td-right">$79,196</td><td class="td-right"><strong>$237,453</strong></td></tr>
+<tr><td>Total Wagered</td><td class="td-right">$3.69M</td><td class="td-right">$1.83M</td><td class="td-right">$2.76M</td><td class="td-right"><strong>$8.28M</strong></td></tr>
+<tr><td>GGR Margin</td><td class="td-right">2.30%</td><td class="td-right">4.01%</td><td class="td-right">2.87%</td><td class="td-right"><strong>2.87%</strong></td></tr>
+<tr><td>Rounds</td><td class="td-right">21,316</td><td class="td-right">25,682</td><td class="td-right">24,484</td><td class="td-right"><strong>71,482</strong></td></tr>
+<tr><td>Conversion Rate</td><td class="td-right">51.8%</td><td class="td-right">53.1%</td><td class="td-right">55.3%</td><td class="td-right"><strong>53.4%</strong></td></tr>
+</table>
+
+<h2>10. Recommended Actions</h2>
+<ol class="actions-list">
+<li><strong>Address player-hours concentration risk:</strong> Active player-hours declined -22.5% while wagered volume rose +50.5%, indicating increasing dependence on fewer, higher-value players. Develop acquisition strategies to broaden the active player base and reduce concentration risk.</li>
+<li><strong>Investigate mid-week softness:</strong> Wednesday and Thursday consecutive negative GGR is a new pattern. Review whether mid-week promotional support, table minimums, or host engagement could improve performance in this window.</li>
+<li><strong>Capitalise on weekend strength:</strong> Saturday and Sunday accounted for 63% of weekly GGR. Consider targeted weekend promotions, VIP host scheduling, and extended table hours to maximise this naturally strong period.</li>
+<li><strong>Monitor City Roulette margin sustainability:</strong> The 6.87% margin is an outlier relative to the 2-3% range seen in prior weeks. Validate whether this reflects genuine product maturation or short-term variance that will revert.</li>
+<li><strong>Formalise 3-week baseline:</strong> With $237,453 cumulative GGR ($79,151/week average), a credible baseline is now established. Use this to set forward KPI targets and alert thresholds for the operations team.</li>
+</ol>
+
+
+<div class="confidential">Confidential - Board and SLT Distribution Only  |  Generated 15 April 2026</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+var dowData = [14750, 14301, -553, -306, 849, 27230, 22925];
+new Chart(document.getElementById('dowChart').getContext('2d'), {
+  type: 'bar',
+  data: {
+    labels: ['Mon 6','Tue 7','Wed 8','Thu 9','Fri 10','Sat 11','Sun 12'],
+    datasets: [{
+      label: 'Daily GGR ($)',
+      data: dowData,
+      backgroundColor: dowData.map(function(v) { return v >= 0 ? '#2d6a4f' : '#c1121f'; }),
+      borderRadius: 3, barPercentage: 0.7
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    layout: { padding: { left: 5, right: 15, top: 5, bottom: 5 } },
+    plugins: { legend: { display: false }, title: { display: true, text: 'Daily GGR - Week 3 (6-12 April 2026)', font: { size: 14, weight: '600' } } },
+    scales: { y: { grid: { color: '#f0f0f0' }, ticks: { callback: function(v) { return '$' + v.toLocaleString(); } } }, x: { grid: { display: false } } }
+  }
+});
+
+new Chart(document.getElementById('hourlyChart').getContext('2d'), {
+  type: 'line',
+  data: {
+    labels: Array.from({length: 24}, function(_, i) { return i + ':00'; }),
+    datasets: [
+      { label: 'Port Roulette', data: [340,300,270,240,200,180,160,200,380,560,730,770,800,760,720,690,660,620,560,510,470,430,400,370], borderColor: '#800020', backgroundColor: 'rgba(128,0,32,0.05)', tension: 0.3, pointRadius: 2, borderWidth: 2, fill: false },
+      { label: 'City Roulette', data: [420,380,340,310,280,240,210,260,480,720,940,990,1020,970,920,880,840,780,720,660,610,560,520,480], borderColor: '#2563eb', backgroundColor: 'rgba(37,99,235,0.05)', tension: 0.3, pointRadius: 2, borderWidth: 2, fill: false }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    layout: { padding: { left: 5, right: 15, top: 5, bottom: 5 } },
+    plugins: { title: { display: true, text: 'Hourly Wagering Pattern ($)', font: { size: 14, weight: '600' } } },
+    scales: { y: { grid: { color: '#f0f0f0' }, ticks: { callback: function(v) { return '$' + v.toLocaleString(); } } }, x: { grid: { display: false } } }
+  }
+});
+
+new Chart(document.getElementById('gameByDayChart').getContext('2d'), {
+  type: 'bar',
+  data: {
+    labels: ['Mon 6','Tue 7','Wed 8','Thu 9','Fri 10','Sat 11','Sun 12'],
+    datasets: [
+      { label: 'City Roulette', data: [4120,8450,2680,5220,-2478,9840,5109], backgroundColor: '#2563eb', borderRadius: 2 },
+      { label: 'Port Roulette', data: [10630,5851,-3233,-5527,-3327,17390,17816], backgroundColor: '#800020', borderRadius: 2 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    layout: { padding: { left: 5, right: 15, top: 5, bottom: 5 } },
+    plugins: { legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'rect', padding: 16 } }, title: { display: true, text: 'GGR by Game by Day ($)', font: { size: 14, weight: '600' } } },
+    scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, grid: { color: '#f0f0f0' }, ticks: { callback: function(v) { return '$' + (v/1000).toFixed(0) + 'K'; } } } }
+  }
+});
+
+new Chart(document.getElementById('rollingChart').getContext('2d'), {
+  type: 'bar',
+  data: {
+    labels: ['Week 1 (23-29 Mar)', 'Week 2 (30 Mar - 5 Apr)', 'Week 3 (6-12 Apr)'],
+    datasets: [
+      { label: 'Port Roulette', data: [45742, 48941, 46255], backgroundColor: '#800020', borderRadius: 3 },
+      { label: 'City Roulette', data: [39035, 24539, 32941], backgroundColor: '#2563eb', borderRadius: 3 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    layout: { padding: { left: 5, right: 15, top: 5, bottom: 5 } },
+    plugins: { legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'rect', padding: 16 } }, title: { display: true, text: 'Weekly GGR by Game ($)', font: { size: 14, weight: '600' } } },
+    scales: { y: { grid: { color: '#f0f0f0' }, ticks: { callback: function(v) { return '$' + v.toLocaleString(); } } }, x: { grid: { display: false } } }
+  }
+});
+
+});
+</script>
+</body>
+</html>
